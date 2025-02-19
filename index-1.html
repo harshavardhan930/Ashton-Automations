@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Bubbles Animation</title>
+    <style>
+       
+
+        body {
+            margin: 0;
+            
+            overflow: hidden;
+        }
+
+        /* Common bubble styles */
+        .bubble {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.8;
+            transition: transform 0.1s linear;
+        }
+
+        /* Orange bubble */
+        .bubble.orange {
+            background-color: orange;
+            box-shadow: 0 0 10px orange;
+        }
+
+        /* Blue bubble */
+        .bubble.blue {
+            background-color: cyan;
+            box-shadow: 0 0 10px cyan;
+        }
+    </style>
+</head>
+<body>
+       Harsha
+    <div class="bubble orange"></div>
+    <div class="bubble blue"></div>
+
+    <script>
+        const orangeBubble = document.querySelector(".bubble.orange");
+        const blueBubble = document.querySelector(".bubble.blue");
+
+        document.addEventListener("mousemove", (e) => {
+            // Update bubble positions with a slight delay for a trailing effect
+            orangeBubble.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            
+            setTimeout(() => {
+                blueBubble.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            }, 50); // Delay for trailing effect
+        });
+    </script>
+
+</body>
+</html>

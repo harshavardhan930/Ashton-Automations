@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comming Soon</title>
+    <style>
+        * {
+            cursor: none; /* Hide default cursor */
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background: url('logo/11.jpg') no-repeat center center/cover;
+        }
+
+        /* Common bubble styles */
+        .bubble {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.8;
+            transition: transform 0.1s linear;
+        }
+
+        /* Orange bubble */
+        .bubble.orange {
+            width: 30px;
+            height: 30px;
+            background-color: rgb(243, 59, 27);
+            box-shadow: 0 0 10px rgb(254, 85, 18);
+        }
+
+        /* Blue bubble */
+        .bubble.blue {
+            background-color: rgb(33, 26, 90);
+            box-shadow: 0 0 10px rgb(12, 13, 76);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bubble orange"></div>
+    <div class="bubble blue"></div>
+
+    <script>
+        const orangeBubble = document.querySelector(".bubble.orange");
+        const blueBubble = document.querySelector(".bubble.blue");
+
+        document.addEventListener("mousemove", (e) => {
+            // Update bubble positions with a slight delay for a trailing effect
+            orangeBubble.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            
+            setTimeout(() => {
+                blueBubble.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            }, 50); // Delay for trailing effect
+        });
+    </script>
+
+</body>
+</html>
