@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comming Soon</title>
+    <title>Coming Soon</title>
     <style>
         * {
             cursor: none; /* Hide default cursor */
+            touch-action: none; /* Prevent unwanted touch behavior */
         }
 
         body {
@@ -52,13 +53,24 @@
         const orangeBubble = document.querySelector(".bubble.orange");
         const blueBubble = document.querySelector(".bubble.blue");
 
-        document.addEventListener("mousemove", (e) => {
-            // Update bubble positions with a slight delay for a trailing effect
-            orangeBubble.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            
+        // Function to update bubble position
+        function updatePosition(x, y) {
+            orangeBubble.style.transform = `translate(${x}px, ${y}px)`;
+
             setTimeout(() => {
-                blueBubble.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                blueBubble.style.transform = `translate(${x}px, ${y}px)`;
             }, 50); // Delay for trailing effect
+        }
+
+        // Mouse movement tracking (Desktop)
+        document.addEventListener("mousemove", (e) => {
+            updatePosition(e.clientX, e.clientY);
+        });
+
+        // Touch movement tracking (Mobile)
+        document.addEventListener("touchmove", (e) => {
+            let touch = e.touches[0];
+            updatePosition(touch.clientX, touch.clientY);
         });
     </script>
 
